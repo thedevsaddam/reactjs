@@ -12,14 +12,20 @@ class App extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = {videos: []};
+        this.videoSearch('alan walker faded');
+    }
 
 
-        YTSearch({key: API_KEY, term: 'alan walker'}, (results) => {
-            this.setState({videos: results}); //we can use object enhancement like using videos, but it fine for now
+    videoSearch(term) {
+        YTSearch({key: API_KEY, term: term}, (results) => {
+            this.setState(
+                {
+                    videos: results,
+                    selectedVideo: results[0]
+                }
+            ); //we can use object enhancement like using videos, but it fine for now
         });
-
     }
 
     render() {
@@ -35,7 +41,7 @@ class App extends React.Component {
                 <SearchBar />
 
                 <VideoList videos={this.state.videos}/>
-                <VideoDetails video={this.state.videos[0]}/>
+                <VideoDetails video={this.state.selectedVideo}/>
 
             </div>
         );
