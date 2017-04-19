@@ -1,8 +1,21 @@
-.video-list{
-    text-align: center;
+#search_bar{
+    margin: 20px;
+    font-weight: bold;
+    width: 94%;
 }
 
-.video-list-item{
-    float: left;
+.hint-search{
+    margin-left: 15px;
+}
+
+.list-group li{
     list-style: none;
+    border-top: 1px solid silver;
+    border-left: 1px solid silver;
+    border-right: 1px solid silver;
+}
+
+.list-group li:hover{
+    cursor: pointer;
+    opacity: .7;
 }

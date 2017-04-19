@@ -21,7 +21,7 @@ export default class SearchBar extends Component {
                     placeholder="Search your favorite video here..."
                     onChange={ e => this.onInputChange(e.target.value) }
                 />
-                <small className="text-help text-muted">Searching for: { this.state.term }</small>
+                <small className="hint-search text-help text-muted">Showing results for: { this.state.term }</small>
             </div>
         );
     }
