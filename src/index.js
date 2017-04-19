@@ -13,7 +13,10 @@ class App extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {videos: []};
+        this.state = {
+            videos: [],
+            selectedVideo: null
+        };
         this.videoSearch('');
     }
 
@@ -43,10 +46,10 @@ class App extends React.Component {
                 </div>
 
                 <SearchBar onSearchTermChange={videoSearch} />
-
-                <VideoList videos={this.state.videos}/>
                 <VideoDetails video={this.state.selectedVideo}/>
-
+                <VideoList videos={this.state.videos}
+                           onVideoSelect={ (selectedVideo) => this.setState({selectedVideo}) }
+                />
             </div>
         );
     }
