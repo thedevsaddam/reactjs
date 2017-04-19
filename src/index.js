@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
+import _ from 'lodash';
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
 import VideoDetails from './components/video_details';
@@ -13,7 +14,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {videos: []};
-        this.videoSearch('alan walker faded');
+        this.videoSearch('');
     }
 
 
@@ -29,6 +30,9 @@ class App extends React.Component {
     }
 
     render() {
+
+        const videoSearch = _.debounce( (term) => {this.videoSearch(term)}, 300);
+
         return (
             <div>
 
@@ -38,7 +42,7 @@ class App extends React.Component {
                     </span>
                 </div>
 
-                <SearchBar onSearchTermChange={term => this.videoSearch(term)} />
+                <SearchBar onSearchTermChange={videoSearch} />
 
                 <VideoList videos={this.state.videos}/>
                 <VideoDetails video={this.state.selectedVideo}/>
