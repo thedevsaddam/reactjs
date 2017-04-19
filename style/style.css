@@ -1,0 +1,8 @@
+.video-list{
+    text-align: center;
+}
+
+.video-list-item{
+    float: left;
+    list-style: none;
+}
